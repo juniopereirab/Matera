@@ -1,16 +1,32 @@
-interface IArticle {
+interface IUser {
   id: number;
-  title: string;
-  body: string;
+  name: string;
 }
 
-type ArticleState = {
-  articles: IArticle[];
-};
-
-type ArticleAction = {
+type UserAction = {
   type: string;
-  article: IArticle;
+  user: IUser;
+  isLogged: boolean;
 };
 
-type DispatchType = (args: ArticleAction) => ArticleAction;
+type UserState = {
+  user: IUser | null;
+  isLogged: boolean;
+};
+
+type IProduct = {
+  id: number;
+  name: string;
+};
+
+type ProductAction = {
+  type: string;
+  product: IProduct;
+  products: IProduct[];
+};
+
+type ProductState = {
+  products: IProduct[];
+};
+
+type MainState = UserState & ProductState;

@@ -9,6 +9,6 @@ export default createGlobalStyle`
         font-family: 'Open Sans', sans-serif; 
     }
     #root{
-        margin:0 auto;
+        margin:0git s auto;
     }
 `;
