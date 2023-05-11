@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 
-import { api } from "./api";
+import { api, cepApi } from "./api";
 
 const path = "/user";
 
@@ -16,4 +16,14 @@ export const getUser = async (email: string) => {
   });
 
   return response.data[0];
+};
+
+export const addUser = async (user: ISignUpForm) => {
+  const response = await api.post(path, user);
+  return response;
+};
+
+export const getAddress = async (cep: string) => {
+  const response = await cepApi.get(`/${cep}/json`);
+  return response.data;
 };

@@ -1,6 +1,7 @@
 import * as Yup from "yup";
 
 const CPFRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+const CEPRegex = /^\d{5}-\d{3}$/;
 
 enum Gender {
   MALE = "male",
@@ -14,12 +15,12 @@ export const SignInSchema = Yup.object().shape({
 });
 
 const addressSchema = Yup.object().shape({
-  cep: Yup.string().required(),
-  city: Yup.string().required(),
-  state: Yup.string().required(),
-  street: Yup.string().required(),
-  neighborhood: Yup.string().required(),
-  complement: Yup.string(),
+  cep: Yup.string().required().matches(CEPRegex),
+  cidade: Yup.string().required(),
+  estado: Yup.string().required(),
+  logradouro: Yup.string().required(),
+  bairro: Yup.string().required(),
+  complemento: Yup.string(),
 });
 
 export const SignUpSchema = Yup.object().shape({

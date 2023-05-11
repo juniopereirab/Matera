@@ -51,6 +51,12 @@ interface ISignInForm {
   password: string;
 }
 
+enum Gender {
+  MALE = "male",
+  FEMALE = "female",
+  NON_BINARY = "non_binary",
+}
+
 interface IAddress {
   cep: string;
   cidade: string;
@@ -58,4 +64,32 @@ interface IAddress {
   logradouro: string;
   bairro: string;
   complemento: string;
+}
+
+interface ISignUpForm {
+  name: string;
+  surname: string;
+  cpf: string;
+  email: string;
+  password: string;
+  gender: Gender;
+  birthdate: Date | string | number;
+  address: IAddress;
+}
+
+interface IProductRegister {
+  name: string;
+}
+
+interface IViaCep {
+  bairro: string;
+  cep: string;
+  complemento: string;
+  ddd: string;
+  gia: string;
+  ibge: string;
+  localidade: string;
+  logradouro: string;
+  siafi: string;
+  uf: string;
 }
