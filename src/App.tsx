@@ -1,21 +1,19 @@
-import { CssBaseline, Box, styled } from "@mui/material";
+import { CssBaseline } from "@mui/material";
 import React from "react";
 import { Provider } from "react-redux";
-
 import "./App.css";
-import store from "./store";
+import { PersistGate } from "redux-persist/integration/react";
 
-const MyComponent = styled(Box)({
-  width: "120px",
-  height: "120px",
-  background: "red",
-});
+import AppRoutes from "./router";
+import { store, persistor } from "./store";
 
 function App() {
   return (
     <Provider store={store}>
-      <CssBaseline />
-      <MyComponent />
+      <PersistGate persistor={persistor}>
+        <CssBaseline />
+        <AppRoutes />
+      </PersistGate>
     </Provider>
   );
 }

@@ -4,7 +4,7 @@ import { createReducer } from "@reduxjs/toolkit";
 import { setLogged, setUnlogged } from "../actions/user";
 
 const initialState: UserState = {
-  user: null,
+  info: null,
   isLogged: false,
 };
 
@@ -12,11 +12,11 @@ const reducer = createReducer(initialState, (builder) => {
   builder
     .addCase(setLogged, (state, action) => {
       state.isLogged = action.payload.isLogged;
-      state.user = action.payload.user;
+      state.info = action.payload.user;
     })
     .addCase(setUnlogged, (state, action) => {
       state.isLogged = action.payload.isLogged;
-      state.user = action.payload.user;
+      state.info = action.payload.user;
     });
 });
 
