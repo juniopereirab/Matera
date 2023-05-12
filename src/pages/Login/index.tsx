@@ -8,10 +8,6 @@ import { setLogged } from "../../store/actions/user";
 import { SignInSchema } from "../../utils/validators/schemas";
 import { Button, Container, Image, Input, MajorContainer } from "./styles";
 
-const email = "Ola92@gmail.com";
-const senha = "nFRb2uF4jGqRC6y";
-console.log(email, senha);
-
 const initialValues: ISignInForm = {
   email: "",
   password: "",

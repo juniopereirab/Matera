@@ -70,7 +70,6 @@ export default function Register() {
     handleChange(event);
     const cep = event.target.value;
     const formattedCep = cep.replace(/\D/g, "");
-    console.log(formattedCep.length);
 
     if (formattedCep.length === 8) {
       const address = await getAddress(formattedCep);
@@ -90,7 +89,6 @@ export default function Register() {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleDate = (date: any) => {
-    console.log(date);
     formik.setValues({
       ...formik.values,
       birthdate: new Date(date.$d || null),

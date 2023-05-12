@@ -18,7 +18,7 @@ interface IUser {
 }
 
 type UserAction = {
-  user: IUser;
+  user: IUser | null;
   isLogged: boolean;
 };
 
@@ -29,16 +29,41 @@ type UserState = {
 
 type IProduct = {
   id: number;
-  name: string;
+  avatar: string;
+  createdAt: string;
+  marca: string;
+  nome: string;
+  preco: string;
+  qt_estoque: number;
+  qt_vendas: number;
 };
+
+interface IProductData {
+  avatar: string;
+  createdAt: string;
+  marca: string;
+  nome: string;
+  preco: string;
+  qt_estoque: number;
+  qt_vendas: number;
+}
 
 type ProductAction = {
   product: IProduct;
+};
+
+type ProductsAction = {
   products: IProduct[];
 };
 
+type PageAction = {
+  page: number;
+};
+
 type ProductState = {
-  products: IProduct[];
+  list: IProduct[];
+  currentPage: number;
+  lastSeen: IProduct[];
 };
 
 type MainState = {
@@ -75,10 +100,6 @@ interface ISignUpForm {
   gender: Gender;
   birthdate: Date | string | number;
   address: IAddress;
-}
-
-interface IProductRegister {
-  name: string;
 }
 
 interface IViaCep {

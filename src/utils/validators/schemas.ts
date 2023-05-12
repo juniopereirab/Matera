@@ -33,3 +33,13 @@ export const SignUpSchema = Yup.object().shape({
   birthdate: Yup.date().max(new Date()).required(),
   address: addressSchema,
 });
+
+export const ProductSchema = Yup.object().shape({
+  nome: Yup.string().required(),
+  avatar: Yup.string().required(),
+  marca: Yup.string().required(),
+  preco: Yup.string().required(),
+  qt_estoque: Yup.number().required(),
+  qt_vendas: Yup.number().required(),
+  createdAt: Yup.string().required(),
+});

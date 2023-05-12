@@ -25,7 +25,12 @@ function AppRoutes() {
         <Route
           path="/produtos"
           element={isLogged ? <Products /> : <Navigate to="/" replace />}
-        />
+        >
+          <Route
+            path=":productId"
+            element={isLogged ? <Products /> : <Navigate to="/" replace />}
+          />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
