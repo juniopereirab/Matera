@@ -1,1 +1,0 @@
-web: nvm install 16 && nvm use 16 && npm run build && node --version
