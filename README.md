@@ -1,46 +1,50 @@
-# Getting Started with Create React App
+# Projeto Prático - Matera
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Esse projeto tem como objetivo a demonstração de conhecimento prático sobre as tecnologias que envolvem o React.
 
-## Available Scripts
+## Bibliotecas
 
-In the project directory, you can run:
+Foram utilizadas as bibliotecas:
 
-### `npm start`
+- Formik
+- Yup
+- Material UI
+- Styled Components
+- ESLint
+- Prettier
+- TypeScript
+- Redux
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Que tinham como objetivo realizar configurações para melhoria e padronização do desenvolvimento como é o caso do ESLint e o Prettier, assim como também incrementar facilidades no desenvolvimento de algumas funcionalidades e estilos. Contando com validação de formulários, persistência dos dados além de fornecimento de componentes pré-configurados para o uso.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Modo de Instalação
 
-### `npm test`
+Para instalar o projeto, é necessário realizar o `CLONE` do Repositório
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+$ git clone https://github.com/juniopereirab/Matera
+```
 
-### `npm run build`
+Após o download dos dados, é necessário a instalação das dependências, com os comandos
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+$ cd Matera
+$ npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Caso ocorra algum erro na instalação das dependências (é possível devido a versão do Node + Npm). Vocë pode tentar rodando:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+$ cd Matera
+$ npm install --legacy-peer-deps
+```
 
-### `npm run eject`
+Com isso, basta rodar o projeto com o comando
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+$ npm start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Informações adicionais
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Foi feito o deploy dessa aplicação no Heroku no seguinte endereço: https://matera.herokuapp.com/
