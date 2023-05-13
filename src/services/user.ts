@@ -19,8 +19,12 @@ export const getUser = async (email: string) => {
 };
 
 export const addUser = async (user: ISignUpForm) => {
-  const response = await api.post(path, user);
-  return response;
+  try {
+    const response = await api.post(path, user);
+    return response;
+  } catch (error) {
+    throw new Error("Requisição inválida");
+  }
 };
 
 export const getAddress = async (cep: string) => {

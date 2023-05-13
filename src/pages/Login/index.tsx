@@ -40,7 +40,7 @@ export default function Login() {
   const sendToRegister = () => {
     navigate("/register");
   };
-
+  console.log(formik);
   return (
     <MajorContainer>
       <Container spacing={2}>
@@ -54,6 +54,7 @@ export default function Login() {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           name="email"
+          error={Boolean(formik.errors.email)}
         />
         <Input
           id="password"

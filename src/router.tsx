@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Login from "./pages/Login";
+import NotFound from "./pages/NotFound";
 import Products from "./pages/Products";
 import Register from "./pages/Register";
 
@@ -31,6 +32,7 @@ function AppRoutes() {
             element={isLogged ? <Products /> : <Navigate to="/" replace />}
           />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

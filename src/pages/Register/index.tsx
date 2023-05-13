@@ -3,12 +3,13 @@ import { DatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { useFormik } from "formik";
-// import { useDispatch } from "react-redux";
+import { useState } from "react";
 import ReactInputMask from "react-input-mask";
 import { useNavigate } from "react-router-dom";
 
 import MateraLogo from "../../assets/images/logo-azul.png";
 import { addUser, getAddress } from "../../services/user";
+import { isCpfValid } from "../../utils/helpers/CPF";
 import { SignUpSchema } from "../../utils/validators/schemas";
 import {
   Button,
@@ -44,16 +45,26 @@ const initialValues: ISignUpForm = {
 };
 
 export default function Register() {
-  // const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [cpfError, setCpfError] = useState<boolean>(false);
 
   const sendToLogin = () => {
     navigate("/");
   };
 
   const onSubmit = async (values: ISignUpForm) => {
-    await addUser(values);
-    sendToLogin();
+    const isCPFValid = isCpfValid(values.cpf);
+    if (isCPFValid) {
+      setCpfError(false);
+      try {
+        await addUser(values);
+        sendToLogin();
+      } catch (error) {
+        sendToLogin();
+      }
+    } else {
+      setCpfError(true);
+    }
   };
 
   const formik = useFormik({
@@ -135,6 +146,7 @@ export default function Register() {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             name="cpf"
+            error={Boolean(formik.errors.cpf) || cpfError}
             InputProps={{
               inputComponent: ReactInputMask,
               inputProps: {

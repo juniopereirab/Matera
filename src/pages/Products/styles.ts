@@ -110,6 +110,7 @@ export const ProductImage = styled("img")`
   width: 150px;
   height: 150px;
   border-radius: 4px;
+  flex: 1;
 `;
 
 export const ProductContainer = styled(Grid)`

@@ -45,14 +45,18 @@ export function ProductList() {
               key={Math.random()}
               sx={12}
               sm={6}
-              md={4}
               onClick={() => navigate(`/produtos/${product.id}`)}
             >
               <ProductImage src={product.avatar} alt="product" />
               <ProductInfo>
                 <ProductText>{product.nome}</ProductText>
+                <ProductText>by {product.marca}</ProductText>
                 <ProductPrice>R$ {product.preco}</ProductPrice>
                 <ProductText>{product.qt_vendas} vendidos</ProductText>
+                <ProductText>{product.qt_estoque} em estoque</ProductText>
+                <ProductText>
+                  Criado em {new Date(product.createdAt).toLocaleDateString()}
+                </ProductText>
               </ProductInfo>
             </ProductItem>
           ))}
