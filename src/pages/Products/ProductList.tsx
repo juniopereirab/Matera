@@ -1,4 +1,12 @@
-import { Pagination } from "@mui/material";
+import {
+  Pagination,
+  Paper,
+  Table,
+  TableHead,
+  TableCell,
+  TableBody,
+  TableRow,
+} from "@mui/material";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -6,7 +14,6 @@ import { useNavigate } from "react-router-dom";
 import { setPage } from "../../store/actions/products";
 import {
   ProductImage,
-  ProductInfo,
   ProductItem,
   ProductListContainer,
   ProductPrice,
@@ -56,29 +63,54 @@ export function ProductList() {
   };
   return (
     <>
-      <ProductListContainer container>
-        {list.length > 0 &&
-          elementsByPage().map((product) => (
-            <ProductItem
-              item
-              key={Math.random()}
-              sx={12}
-              sm={6}
-              onClick={() => navigate(`/produtos/${product.id}`)}
-            >
-              <ProductImage src={product.avatar} alt="product" />
-              <ProductInfo>
-                <ProductText>{product.nome}</ProductText>
-                <ProductText>by {product.marca}</ProductText>
-                <ProductPrice>R$ {product.preco}</ProductPrice>
-                <ProductText>{product.qt_vendas} vendidos</ProductText>
-                <ProductText>{product.qt_estoque} em estoque</ProductText>
-                <ProductText>
-                  Criado em {new Date(product.createdAt).toLocaleDateString()}
-                </ProductText>
-              </ProductInfo>
-            </ProductItem>
-          ))}
+      <ProductListContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Imagem</TableCell>
+              <TableCell>Nome</TableCell>
+              <TableCell>Marca</TableCell>
+              <TableCell>Preço</TableCell>
+              <TableCell>Vendidos</TableCell>
+              <TableCell>Estoque</TableCell>
+              <TableCell>Data de Criação</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {list.length > 0 &&
+              elementsByPage().map((product) => (
+                <ProductItem
+                  key={Math.random()}
+                  onClick={() => navigate(`/produtos/${product.id}`)}
+                >
+                  <TableCell>
+                    <ProductImage src={product.avatar} alt="product" />
+                  </TableCell>
+                  <TableCell>
+                    <ProductText>{product.nome}</ProductText>
+                  </TableCell>
+                  <TableCell>
+                    <ProductText>{product.marca}</ProductText>
+                  </TableCell>
+                  <TableCell>
+                    <ProductPrice>R$ {product.preco}</ProductPrice>
+                  </TableCell>
+                  <TableCell>
+                    <ProductText>{product.qt_vendas}</ProductText>
+                  </TableCell>
+                  <TableCell>
+                    {" "}
+                    <ProductText>{product.qt_estoque}</ProductText>
+                  </TableCell>
+                  <TableCell>
+                    <ProductText>
+                      {new Date(product.createdAt).toLocaleDateString()}
+                    </ProductText>
+                  </TableCell>
+                </ProductItem>
+              ))}
+          </TableBody>
+        </Table>
       </ProductListContainer>
       <Pagination
         count={Math.floor(numberOfPages())}

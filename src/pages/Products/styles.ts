@@ -10,6 +10,8 @@ import {
   Stack,
   List,
   ListItem,
+  TableRow,
+  TableContainer,
 } from "@mui/material";
 
 export const Container = styled(Box)`
@@ -64,7 +66,7 @@ export const InnerContainer = styled(Box)`
   gap: 12px;
 `;
 
-export const ProductListContainer = styled(Grid)`
+export const ProductListContainer = styled(TableContainer)`
   overflow: auto;
   width: 100%;
   min-height: calc(100vh - 120px);
@@ -75,26 +77,12 @@ export const ProductListContainer = styled(Grid)`
   justify-content: center;
 `;
 
-export const ProductItem = styled(Grid)`
-  display: flex;
-  width: 100%;
-  padding: 12px;
+export const ProductItem = styled(TableRow)`
   background: transparent;
   transition: all 1s;
-  border-radius: 4px;
   &:hover {
     background: #d2d2d2;
   }
-`;
-
-export const ProductInfo = styled(Box)`
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  justify-content: center;
-  width: 100%;
-  padding-left: 20px;
-  cursor: pointer;
 `;
 
 export const ProductText = styled(Typography)`
@@ -108,10 +96,9 @@ export const ProductPrice = styled(Typography)`
 `;
 
 export const ProductImage = styled("img")`
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   border-radius: 4px;
-  flex: 1;
 `;
 
 export const ProductContainer = styled(Grid)`
