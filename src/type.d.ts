@@ -64,6 +64,7 @@ type ProductState = {
   list: IProduct[];
   currentPage: number;
   lastSeen: IProduct[];
+  filter: string;
 };
 
 type MainState = {

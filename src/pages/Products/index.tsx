@@ -6,7 +6,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 
 import ProductModal from "../../components/ProductModal";
 import { getProducts } from "../../services/products";
-import { setProducts } from "../../store/actions/products";
+import { changeFilter, setProducts } from "../../store/actions/products";
 import { setUnlogged } from "../../store/actions/user";
 import { ProductDetail } from "./ProductDetail";
 import { ProductList } from "./ProductList";
@@ -23,6 +23,7 @@ import {
   UserName,
   MostVistedListItem,
   CreateProductButton,
+  FilterInput,
 } from "./styles";
 
 const drawerWidth = 240;
@@ -34,7 +35,9 @@ export default function Products() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [createModalOpen, setCreateModalOpen] = useState<boolean>(false);
   const open = Boolean(anchorEl);
-  const { list, lastSeen } = useSelector((state: MainState) => state.product);
+  const { list, lastSeen, filter } = useSelector(
+    (state: MainState) => state.product
+  );
   const { info } = useSelector((state: MainState) => state.user);
 
   const loadProducts = async () => {
@@ -63,6 +66,12 @@ export default function Products() {
         isLogged: false,
       })
     );
+  };
+
+  const handleFilter = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+
+    dispatch(changeFilter(value));
   };
 
   useEffect(() => {
@@ -125,6 +134,13 @@ export default function Products() {
         </Drawer>
         <InnerContainer>
           <NavBar>
+            <FilterInput
+              type="text"
+              value={filter}
+              onChange={handleFilter}
+              label="Buscar por nome"
+              size="small"
+            />
             <CreateProductButton
               onClick={() => setCreateModalOpen(true)}
               variant="contained"

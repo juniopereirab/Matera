@@ -6,3 +6,4 @@ export const DELETE_PRODUCT = "DELETE_PRODUCT";
 export const SET_PRODUCTS = "SET_PRODUCTS";
 export const SET_PAGE = "SET_PAGE";
 export const ADD_LAST_SEEN = "ADD_LAST_SEEN";
+export const CHANGE_FILTER = "CHANGE_FILTER";

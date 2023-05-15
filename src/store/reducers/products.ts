@@ -4,6 +4,7 @@ import { createReducer } from "@reduxjs/toolkit";
 import {
   addLastSeen,
   addProduct,
+  changeFilter,
   deleteProduct,
   editProduct,
   setPage,
@@ -14,6 +15,7 @@ const initialState: ProductState = {
   list: [],
   currentPage: 1,
   lastSeen: [],
+  filter: "",
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -52,6 +54,9 @@ const reducer = createReducer(initialState, (builder) => {
       );
       state.lastSeen.splice(indexLastSeen, 1);
       state.list.splice(indexList, 1);
+    })
+    .addCase(changeFilter, (state, action) => {
+      state.filter = action.payload;
     });
 });
 

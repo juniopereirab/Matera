@@ -16,7 +16,7 @@ import {
 export function ProductList() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { list, currentPage } = useSelector(
+  const { list, currentPage, filter } = useSelector(
     (state: MainState) => state.product
   );
   const handlePaginationChange = (
@@ -33,7 +33,26 @@ export function ProductList() {
   const elementsByPage = () => {
     const start = currentPage * 15;
     const end = start + 15;
+
+    if (filter) {
+      return list.filter((produto) =>
+        produto.nome.toLowerCase().includes(filter.toLowerCase())
+      );
+    }
+
     return list.slice(start, end);
+  };
+
+  const numberOfPages = () => {
+    if (filter) {
+      const filterLen =
+        list.filter((produto) =>
+          produto.nome.toLowerCase().includes(filter.toLowerCase())
+        ).length / 15;
+
+      return filterLen > 1 ? filterLen : 1;
+    }
+    return list.length / 15;
   };
   return (
     <>
@@ -62,7 +81,7 @@ export function ProductList() {
           ))}
       </ProductListContainer>
       <Pagination
-        count={Math.floor(list.length / 15)}
+        count={Math.floor(numberOfPages())}
         page={currentPage}
         onChange={handlePaginationChange}
       />

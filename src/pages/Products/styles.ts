@@ -1,4 +1,5 @@
 import {
+  TextField,
   styled,
   Box,
   Toolbar,
@@ -207,4 +208,8 @@ export const MostVistedListItem = styled(ListItem)`
 export const CreateProductButton = styled(Button)`
   width: 200px;
   height: 40px;
+`;
+
+export const FilterInput = styled(TextField)`
+  width: 250px;
 `;

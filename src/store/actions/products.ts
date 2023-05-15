@@ -8,3 +8,4 @@ export const setProducts = createAction<ProductsAction>(TYPES.SET_PRODUCTS);
 export const deleteProduct = createAction<ProductAction>(TYPES.DELETE_PRODUCT);
 export const setPage = createAction<PageAction>(TYPES.SET_PAGE);
 export const addLastSeen = createAction<ProductAction>(TYPES.ADD_LAST_SEEN);
+export const changeFilter = createAction<string>(TYPES.CHANGE_FILTER);
